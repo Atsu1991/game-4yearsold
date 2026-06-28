@@ -331,6 +331,91 @@ body{
 .clock-btn.ok{background:var(--green);color:#1A6000;}
 .clock-btn.ng{background:#FFB4B4;color:#8B0000;animation:opt-wrong .4s ease;}
 
+/* ============================================================
+   RESPONSIVE – MOBILE
+   ============================================================ */
+
+/* スマホ縦 (≤600px) */
+@media (max-width:600px){
+  /* ホーム */
+  .home-title{font-size:clamp(1.4rem,6vw,2.2rem);margin-bottom:2px;}
+  .subtitle{font-size:.82rem;margin-bottom:10px;}
+  .diff-row{gap:6px;margin-bottom:10px;}
+  .diff-btn{padding:7px 12px;font-size:.82rem;}
+
+  /* モードグリッド: 3列 */
+  .mode-grid{grid-template-columns:repeat(3,1fr);gap:7px;max-width:100%;}
+  .mode-card{padding:12px 6px;gap:5px;border-radius:16px;border-width:2px;box-shadow:0 5px 0 rgba(0,0,0,.12);}
+  .mode-icon{font-size:1.9rem;}
+  .mode-name{font-size:.78rem;}
+  .mode-desc{display:none;}
+
+  /* スクリーンをスクロール可能に */
+  .screen{overflow-y:auto;justify-content:flex-start;padding-top:12px;padding-bottom:12px;}
+  body{overflow:auto;}
+
+  /* ゲームヘッダー */
+  .game-hdr{margin-bottom:6px;}
+  .back-btn,.score-pill{padding:7px 12px;font-size:.82rem;}
+  .prog-bar{margin-bottom:6px;height:9px;}
+
+  /* いろあわせ・なかまあつめ */
+  .bucket,.anim-card{width:82px;height:82px;border-radius:20px;}
+  .anim-card{font-size:2.2rem;}
+  .bucket-label{font-size:.82rem;}
+  .buckets-row,.animals-row{gap:8px;}
+  .color-instr{font-size:.9rem;padding:6px 14px;}
+
+  /* かたちあわせ */
+  .shape-q{padding:16px 18px;}
+  .shape-q-display{font-size:4rem;}
+  .shape-opt{width:72px;height:72px;font-size:2.6rem;}
+
+  /* かずあそび */
+  .num-display{min-height:110px;padding:14px;}
+  .num-animal{font-size:2rem;}
+  .num-btn{width:56px;height:56px;font-size:1.4rem;}
+
+  /* きおくあそび */
+  .mem-grid.g4{grid-template-columns:repeat(4,1fr);}
+  .mem-grid.g6{grid-template-columns:repeat(4,1fr);}
+  .mem-grid{gap:6px;}
+  .mc-front::after{font-size:1.4rem;}
+  .mc-back{font-size:clamp(1.6rem,6vw,3rem);}
+
+  /* ひらがなあそび */
+  .hira-target{font-size:4rem;padding:14px 22px;}
+  .hira-btn{width:62px;height:62px;font-size:1.75rem;}
+  .hira-slot{width:44px;height:44px;font-size:1.5rem;}
+
+  /* おおきさならべ */
+  .size-cards{padding:16px 10px;gap:10px;}
+
+  /* まちがいさがし */
+  .diff-item{font-size:2rem;padding:2px 4px;}
+  .diff-col{padding:10px 8px;gap:4px;}
+
+  /* めいろ */
+  .maze-hint{font-size:.82rem;padding:5px 14px;}
+
+  /* リズムあそび */
+  .rhythm-btn{width:80px;height:80px;font-size:3rem;}
+  .rhythm-label{font-size:1.05rem;padding:8px 18px;}
+
+  /* とけいよみ */
+  #clock-cv{width:180px!important;height:180px!important;}
+  .clock-btn{min-width:78px;height:54px;font-size:1rem;padding:0 8px;}
+
+  /* クリア画面 */
+  .clear-title{font-size:clamp(2rem,8vw,3.5rem);}
+}
+
+/* タブレット縦 (601px〜900px) — 3列グリッド */
+@media (min-width:601px) and (max-width:900px){
+  .mode-grid{grid-template-columns:repeat(3,1fr);}
+  .mode-desc{font-size:.65rem;}
+}
+
 /* ── DRAG GHOST ── */
 .drag-ghost{
   position:fixed;pointer-events:none;z-index:5000;
