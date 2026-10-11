@@ -91,6 +91,12 @@ body{
 .mode-card:nth-child(8){animation-delay:.64s;background:linear-gradient(135deg,#F5F0FF,#EAE0FF);}
 .mode-card:nth-child(9){animation-delay:.72s;background:linear-gradient(135deg,#F0FFF8,#D8FFE8);}
 .mode-card:nth-child(10){animation-delay:.80s;background:linear-gradient(135deg,#FFF8F0,#FFE8D0);}
+.mode-card:nth-child(11){animation-delay:.88s;background:linear-gradient(135deg,#F0F8FF,#D8EEFF);}
+.mode-card:nth-child(12){animation-delay:.96s;background:linear-gradient(135deg,#FFF0FC,#FFD8F5);}
+.mode-card:nth-child(13){animation-delay:1.04s;background:linear-gradient(135deg,#F0FFFA,#D8FFF0);}
+.mode-card:nth-child(14){animation-delay:1.12s;background:linear-gradient(135deg,#FFFCF0,#FFF4D0);}
+.mode-card:nth-child(15){animation-delay:1.20s;background:linear-gradient(135deg,#F4F0FF,#E4DCFF);}
+.mode-card:nth-child(16){animation-delay:1.28s;background:linear-gradient(135deg,#F8F8F8,#E4E4EC);}
 @keyframes card-in{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
 .mode-card:active{transform:scale(.94) translateY(4px);box-shadow:0 4px 0 rgba(0,0,0,.12);}
 .mode-icon{font-size:2.8rem;animation:wobble 2s ease-in-out infinite;display:inline-block;}
@@ -199,7 +205,7 @@ body{
 }
 .shape-opt:active{transform:scale(.9);}
 @keyframes opt-correct{0%,100%{transform:scale(1);}50%{transform:scale(1.22);}}
-@keyframes opt-wrong{0%,100%{translateX(0);}25%{transform:translateX(-9px);}75%{transform:translateX(9px);}}
+@keyframes opt-wrong{0%,100%{transform:translateX(0);}25%{transform:translateX(-9px);}75%{transform:translateX(9px);}}
 .shape-opt.ok{border-color:#4CAF50;background:#E8FFE8;animation:opt-correct .5s ease;}
 .shape-opt.ng{border-color:#FF5722;background:#FFE8E8;animation:opt-wrong .4s ease;}
 
@@ -332,6 +338,80 @@ body{
 .clock-btn.ng{background:#FFB4B4;color:#8B0000;animation:opt-wrong .4s ease;}
 
 /* ============================================================
+   MODE 12 – DOT-TO-DOT
+   ============================================================ */
+.dot-game-area{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:580px;}
+.dot-label{font-size:1.1rem;font-weight:800;color:#555;background:rgba(255,255,255,.7);border-radius:50px;padding:8px 24px;text-align:center;}
+#dot-cv{touch-action:none;cursor:pointer;border-radius:20px;box-shadow:0 8px 0 rgba(0,0,0,.12);}
+
+/* ============================================================
+   MODE 13 – FLASH MEMORY
+   ============================================================ */
+.flash-game-area{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:580px;}
+.flash-label{font-size:1.2rem;font-weight:800;color:#555;background:rgba(255,255,255,.7);border-radius:50px;padding:10px 28px;text-align:center;min-width:200px;}
+.flash-area{
+  position:relative;width:280px;height:280px;
+  background:#fff;border-radius:28px;
+  box-shadow:0 8px 0 rgba(0,0,0,.12);
+  overflow:hidden;cursor:pointer;
+}
+.flash-emoji{position:absolute;font-size:2.8rem;line-height:1;user-select:none;-webkit-user-select:none;transition:opacity .3s;}
+.flash-hit{position:absolute;font-size:1.6rem;pointer-events:none;transform:translate(-50%,-50%);}
+.flash-hint-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.flash-hint-btn{font-family:inherit;font-size:1rem;font-weight:800;padding:10px 20px;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.15);transition:transform .1s,box-shadow .1s;}
+.flash-hint-btn:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.15);}
+#fl-retry-btn{background:linear-gradient(135deg,#FFE66D,#FFA24B);color:#7A5000;}
+#fl-skip-btn{background:linear-gradient(135deg,#E0E0E0,#C0C0C0);color:#555;}
+
+/* ============================================================
+   MODE 14 – PATTERN
+   ============================================================ */
+.pattern-area{display:flex;flex-direction:column;align-items:center;gap:22px;width:100%;max-width:620px;}
+.pattern-label{font-size:1.2rem;font-weight:800;color:#555;background:rgba(255,255,255,.7);border-radius:50px;padding:10px 28px;text-align:center;}
+.pattern-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;background:rgba(255,255,255,.55);border-radius:26px;padding:14px 16px;}
+.pattern-cell{
+  width:62px;height:62px;border-radius:16px;background:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:2.2rem;
+  box-shadow:0 4px 0 rgba(0,0,0,.1);
+  animation:pop-in .3s ease backwards;
+}
+.pattern-cell.q{
+  background:linear-gradient(135deg,#FFE66D,#FFA24B);color:#7A5000;
+  font-size:2rem;font-weight:900;animation:q-pulse 1.1s ease-in-out infinite;
+}
+@keyframes q-pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+
+/* ============================================================
+   MODE 15 – COMPARE (どっちがおおい)
+   ============================================================ */
+.comp-area{display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;max-width:620px;}
+.comp-label{font-size:1.3rem;font-weight:800;color:#555;background:rgba(255,255,255,.7);border-radius:50px;padding:10px 28px;text-align:center;}
+.comp-panels{display:flex;gap:14px;width:100%;justify-content:center;align-items:stretch;}
+.comp-panel{
+  flex:1;max-width:260px;min-height:210px;
+  background:#fff;border-radius:28px;border:5px solid rgba(255,255,255,.9);
+  box-shadow:0 8px 0 rgba(0,0,0,.12);padding:14px 10px;
+  display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;
+  cursor:pointer;transition:transform .15s;
+}
+.comp-panel:active{transform:scale(.96);}
+.comp-panel.ok{border-color:#4CAF50;background:#E8FFE8;animation:opt-correct .5s ease;}
+.comp-panel.ng{border-color:#FF5722;background:#FFE8E8;animation:opt-wrong .4s ease;}
+.comp-item{font-size:2.1rem;line-height:1;animation:pop-in .3s ease backwards;}
+
+/* ============================================================
+   MODE 16 – SHADOW MATCH (かげあわせ)
+   ============================================================ */
+.shadow-area{display:flex;flex-direction:column;align-items:center;gap:26px;width:100%;max-width:620px;}
+.shadow-q{
+  background:#fff;border-radius:30px;padding:24px 44px;
+  box-shadow:0 8px 0 rgba(0,0,0,.12);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.shadow-q-label{font-size:1rem;font-weight:800;color:#888;}
+.shadow-target{font-size:5.5rem;line-height:1;filter:brightness(0);opacity:.8;animation:pop-in .4s ease;}
+
+/* ============================================================
    RESPONSIVE – MOBILE
    ============================================================ */
 
@@ -405,6 +485,30 @@ body{
   /* とけいよみ */
   #clock-cv{width:180px!important;height:180px!important;}
   .clock-btn{min-width:78px;height:54px;font-size:1rem;padding:0 8px;}
+
+  /* てんつなぎ */
+  .dot-label{font-size:.9rem;padding:6px 14px;}
+
+  /* かくれんぼ */
+  .flash-area{width:240px;height:240px;}
+  .flash-emoji{font-size:2.2rem;}
+  .flash-label{font-size:1rem;padding:8px 18px;}
+
+  /* つづきは なに */
+  .pattern-label{font-size:.95rem;padding:7px 16px;}
+  .pattern-row{gap:6px;padding:10px;border-radius:20px;}
+  .pattern-cell{width:46px;height:46px;font-size:1.6rem;border-radius:12px;}
+  .pattern-cell.q{font-size:1.5rem;}
+
+  /* どっちが おおい */
+  .comp-label{font-size:1.05rem;padding:8px 18px;}
+  .comp-panels{gap:10px;}
+  .comp-panel{min-height:170px;padding:10px 6px;border-width:4px;border-radius:22px;gap:4px;}
+  .comp-item{font-size:1.6rem;}
+
+  /* かげあわせ */
+  .shadow-q{padding:16px 28px;}
+  .shadow-target{font-size:4rem;}
 
   /* クリア画面 */
   .clear-title{font-size:clamp(2rem,8vw,3.5rem);}
@@ -579,7 +683,7 @@ body{
     <div class="mode-card" onclick="startMode('hira')">
       <span class="mode-icon">あ</span>
       <span class="mode-name">ひらがなあそび</span>
-      <span class="mode-desc">さいしょの もじは なに？</span>
+      <span class="mode-desc">なまえを じゅんに タップしよう！</span>
     </div>
     <div class="mode-card" onclick="startMode('sort')">
       <span class="mode-icon">🗂️</span>
@@ -610,6 +714,31 @@ body{
       <span class="mode-icon">🕐</span>
       <span class="mode-name">とけいよみ</span>
       <span class="mode-desc">とけいの じかんを よもう！</span>
+    </div>
+    <div class="mode-card" onclick="startMode('dot')">
+      <span class="mode-icon">✏️</span>
+      <span class="mode-name">てんつなぎ</span>
+      <span class="mode-desc">かずのじゅんに つなごう！</span>
+    </div>
+    <div class="mode-card" onclick="startMode('flash')">
+      <span class="mode-icon">👀</span>
+      <span class="mode-name">かくれんぼ</span>
+      <span class="mode-desc">どこに いたかな？</span>
+    </div>
+    <div class="mode-card" onclick="startMode('pattern')">
+      <span class="mode-icon">🔁</span>
+      <span class="mode-name">つづきはなに</span>
+      <span class="mode-desc">つぎに くるのは どれかな？</span>
+    </div>
+    <div class="mode-card" onclick="startMode('comp')">
+      <span class="mode-icon">⚖️</span>
+      <span class="mode-name">どっちがおおい</span>
+      <span class="mode-desc">かずを くらべて みよう！</span>
+    </div>
+    <div class="mode-card" onclick="startMode('shadow')">
+      <span class="mode-icon">🌑</span>
+      <span class="mode-name">かげあわせ</span>
+      <span class="mode-desc">かげと おなじ えは どれ？</span>
     </div>
   </div>
 </div>
@@ -799,6 +928,92 @@ body{
 </div>
 
 <!-- ══════════════════════════════════════════════
+     MODE 12 – DOT-TO-DOT
+══════════════════════════════════════════════ -->
+<div id="screen-dot" class="screen">
+  <div class="game-hdr">
+    <button class="back-btn" onclick="goHome()">🏠 もどる</button>
+    <div class="score-pill">⭐ <span id="dt-score">0</span></div>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="dt-prog" style="width:0%"></div></div>
+  <div class="dot-game-area">
+    <div class="dot-label">かずのじゅんに タップしよう！</div>
+    <canvas id="dot-cv"></canvas>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MODE 13 – FLASH MEMORY
+══════════════════════════════════════════════ -->
+<div id="screen-flash" class="screen">
+  <div class="game-hdr">
+    <button class="back-btn" onclick="goHome()">🏠 もどる</button>
+    <div class="score-pill">⭐ <span id="fl-score">0</span></div>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="fl-prog" style="width:0%"></div></div>
+  <div class="flash-game-area">
+    <div class="flash-label" id="fl-label">よく みてて！</div>
+    <div class="flash-area" id="fl-area"></div>
+    <div class="flash-hint-btns" id="fl-hint-btns" style="display:none">
+      <button class="flash-hint-btn" id="fl-retry-btn">👁️ もう一度みる</button>
+      <button class="flash-hint-btn" id="fl-skip-btn">🤷 わからない</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MODE 14 – PATTERN
+══════════════════════════════════════════════ -->
+<div id="screen-pattern" class="screen">
+  <div class="game-hdr">
+    <button class="back-btn" onclick="goHome()">🏠 もどる</button>
+    <div class="score-pill">⭐ <span id="pt-score">0</span></div>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="pt-prog" style="width:0%"></div></div>
+  <div class="pattern-area">
+    <div class="pattern-label">つぎに くるのは どれ？</div>
+    <div class="pattern-row" id="pt-row"></div>
+    <div class="shape-opts" id="pt-opts"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MODE 15 – COMPARE
+══════════════════════════════════════════════ -->
+<div id="screen-comp" class="screen">
+  <div class="game-hdr">
+    <button class="back-btn" onclick="goHome()">🏠 もどる</button>
+    <div class="score-pill">⭐ <span id="cp-score">0</span></div>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="cp-prog" style="width:0%"></div></div>
+  <div class="comp-area">
+    <div class="comp-label" id="cp-label">どっちが おおい？</div>
+    <div class="comp-panels">
+      <div class="comp-panel" id="cp-left"></div>
+      <div class="comp-panel" id="cp-right"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MODE 16 – SHADOW MATCH
+══════════════════════════════════════════════ -->
+<div id="screen-shadow" class="screen">
+  <div class="game-hdr">
+    <button class="back-btn" onclick="goHome()">🏠 もどる</button>
+    <div class="score-pill">⭐ <span id="sd-score">0</span></div>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="sd-prog" style="width:0%"></div></div>
+  <div class="shadow-area">
+    <div class="shadow-q">
+      <div class="shadow-q-label">かげと おなじ えは どれ？</div>
+      <div class="shadow-target" id="sd-target">🐱</div>
+    </div>
+    <div class="shape-opts" id="sd-opts"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
      CLEAR SCREEN
 ══════════════════════════════════════════════ -->
 <div id="screen-clear" class="screen">
@@ -855,8 +1070,50 @@ const DIFF_POOL=[
   '🐱','🐶','🐻','🐰','🐘','🦁','🐧','🦊','🐼','🐸','🦄','🦋',
   '🍎','🍌','🍕','🍦','🍩','🥕','🍓','🍇','🍉','🌽','🥦','🧀',
   '🚗','✈️','🚢','🚂','🚁','🚲','🚀','🏎️','⛵','🚌','🛸','🛵',
-  '⭐','🌸','🌈','🌙','☀️','🌊','🔥','🌺','🍀','🦋',
+  '⭐','🌸','🌈','🌙','☀️','🌊','🔥','🌺','🍀','🌻',
 ];
+
+// 260×260 座標系で定義。close:true なら最後に始点へ線を引く
+const DOT_PATTERNS = [
+  // easy (5 dots)
+  {name:'いえ', emoji:'🏠', close:true, dots:[
+    {x:130,y:20},{x:20,y:110},{x:20,y:240},{x:240,y:240},{x:240,y:110}]},
+  {name:'やま', emoji:'🏔️', close:true, dots:[
+    {x:130,y:15},{x:20,y:240},{x:90,y:240},{x:130,y:160},{x:170,y:240},{x:240,y:240}]},
+  // normal (8 dots)
+  {name:'はな', emoji:'🌸', close:true, dots:[
+    {x:130,y:20},{x:200,y:55},{x:235,y:130},{x:200,y:205},
+    {x:130,y:240},{x:60,y:205},{x:25,y:130},{x:60,y:55}]},
+  {name:'さかな', emoji:'🐟', close:true, dots:[
+    {x:40,y:130},{x:70,y:65},{x:160,y:45},{x:230,y:130},
+    {x:160,y:215},{x:70,y:195}]},
+  // hard (10 dots)
+  {name:'ほし', emoji:'⭐', close:true, dots:[
+    {x:130,y:25},{x:155,y:96},{x:230,y:98},{x:170,y:143},
+    {x:192,y:215},{x:130,y:172},{x:68,y:215},{x:90,y:143},{x:30,y:98},{x:105,y:96}]},
+  {name:'ちょうちょ', emoji:'🦋', close:false, dots:[
+    {x:130,y:130},{x:60,y:65},{x:20,y:30},{x:15,y:120},
+    {x:70,y:185},{x:130,y:130},{x:190,y:185},{x:245,y:120},
+    {x:240,y:30},{x:200,y:65}]},
+];
+
+const FLASH_POOL=[
+  '🐱','🐶','🐻','🐰','🐘','🦁','🐧','🦊','🐼','🐸',
+  '🍎','🍌','🍕','🍦','🍩','🌸','⭐','🌈','🌺','🦋',
+  '🚗','✈️','🚢','🚂','🚁','🍇','🌽','🥦','🎈','🎀',
+];
+
+const PATTERN_POOL=['🍎','🍌','🍇','⭐','🌸','🦋','🐱','🚗','🔴','🔵'];
+
+// かげあわせ：グループ内は輪郭が似ているもの同士（むずかしいはグループ内から出題）
+const SHADOW_GROUPS=[
+  ['🐱','🐶','🐻','🐰','🦊','🐼','🐯','🐮'],
+  ['🍎','🍊','🍑','🍅','🍒','🍓'],
+  ['🚗','🚙','🚌','🚕','🚑'],
+  ['🦋','🐝','🐞','🐦'],
+  ['⭐','🌸','🌺','🍀','🌙'],
+];
+const SHADOW_ALL=SHADOW_GROUPS.flat();
 
 // ─────────────────────────────────────────────
 //  AUDIO
@@ -956,6 +1213,8 @@ function showScr(id){
   document.getElementById('screen-'+id).classList.add('active');
 }
 function goHome(){sndTap();showScr('home');curMode=null;}
+// 予約ずみのタイマーが、もう遊んでいないゲームの画面を出してしまうのを防ぐ
+function inMode(m){return curMode===m;}
 function retryMode(){sndTap();if(curMode)startMode(curMode);}
 
 // ─────────────────────────────────────────────
@@ -1031,6 +1290,11 @@ function startMode(mode){
   else if(mode==='maze')    initMaze();
   else if(mode==='rhythm')  initRhythm();
   else if(mode==='clock')   initClock();
+  else if(mode==='dot')     initDot();
+  else if(mode==='flash')   initFlash();
+  else if(mode==='pattern') initPattern();
+  else if(mode==='comp')    initComp();
+  else if(mode==='shadow')  initShadow();
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -1126,7 +1390,7 @@ function makeDraggable(el){
       colScore++;colDone++;
       document.getElementById('c-score').textContent=colScore;
       document.getElementById('c-prog').style.width=(colDone/colTotal*100)+'%';
-      if(colDone>=colTotal)setTimeout(()=>showClear(colScore,colTotal),800);
+      if(colDone>=colTotal)setTimeout(()=>{if(inMode('color'))showClear(colScore,colTotal);},800);
     } else {
       sndNg();
       el.style.animation='none';
@@ -1173,6 +1437,7 @@ function initShape(){
   nextShape();
 }
 function nextShape(){
+  if(!inMode('shape'))return;
   if(shRound>=shTotal){showClear(shOk,shTotal);return;}
   shBusy=false;
   const pool=SHAPES.slice(0,diff===1?3:diff===2?5:8);
@@ -1231,6 +1496,7 @@ function initNumber(){
   nextNumber();
 }
 function nextNumber(){
+  if(!inMode('number'))return;
   if(nuRound>=nuTotal){showClear(nuOk,nuTotal);return;}
   document.getElementById('msg').classList.remove('show');
   nuBusy=false;
@@ -1340,11 +1606,11 @@ function onMemClick(card){
       a.classList.add('done');b.classList.add('done');
       showMsg('ぴったり！','🎊');
       memFlipped=[];memLock=false;
-      if(memMatched>=memPairs)setTimeout(()=>showClear(memPairs,memPairs),800);
+      if(memMatched>=memPairs)setTimeout(()=>{if(inMode('memory'))showClear(memPairs,memPairs);},800);
     },280);
   } else {
     setTimeout(()=>{
-      sndNg();
+      if(inMode('memory'))sndNg();
       a.classList.remove('flipped');b.classList.remove('flipped');
       memFlipped=[];memLock=false;
     },900);
@@ -1354,7 +1620,7 @@ function onMemClick(card){
 // ═══════════════════════════════════════════════════════════
 //  MODE 5 – HIRAGANA (spell the name in order)
 // ═══════════════════════════════════════════════════════════
-let hiTotal=0,hiRound=0,hiOk=0,hiTarget=null,hiPos=0;
+let hiTotal=0,hiRound=0,hiOk=0,hiTarget=null,hiPos=0,hiBusy=false;
 
 function initHira(){
   hiTotal=diff===1?5:diff===2?7:10;
@@ -1365,9 +1631,10 @@ function initHira(){
   nextHira();
 }
 function nextHira(){
+  if(!inMode('hira'))return;
   if(hiRound>=hiTotal){showClear(hiOk,hiTotal);return;}
   document.getElementById('msg').classList.remove('show');
-  hiPos=0;
+  hiPos=0;hiBusy=false;
   // pick animal by name length based on difficulty
   const pool=diff===1
     ? ANIMALS.filter(a=>a.n.length<=2)
@@ -1405,6 +1672,7 @@ function renderHiraButtons(){
   });
 }
 function onHiraTap(ch,btn,container){
+  if(hiBusy)return;                 // 連打で次の文字を先取りしないように
   const correct=hiTarget.n[hiPos];
   sndTap();
   if(ch===correct){
@@ -1413,6 +1681,7 @@ function onHiraTap(ch,btn,container){
     burst(midPt(btn).x,midPt(btn).y,12);
     renderHiraProgress();
     if(hiPos>=hiTarget.n.length){
+      hiBusy=true;
       sndOk();hiOk++;
       document.getElementById('hi-score').textContent=hiOk;
       showMsg('せいかい！','✨');burst(innerWidth/2,innerHeight/2,30);
@@ -1420,7 +1689,8 @@ function onHiraTap(ch,btn,container){
       document.getElementById('hi-prog').style.width=(hiRound/hiTotal*100)+'%';
       setTimeout(nextHira,1200);
     } else {
-      setTimeout(renderHiraButtons,450);
+      hiBusy=true;
+      setTimeout(()=>{hiBusy=false;renderHiraButtons();},450);
     }
   } else {
     btn.classList.add('ng');sndNg();
@@ -1504,7 +1774,7 @@ function makeSortDraggable(el){
       sortScore++;sortDone++;
       document.getElementById('so-score').textContent=sortScore;
       document.getElementById('so-prog').style.width=(sortDone/sortTotal*100)+'%';
-      if(sortDone>=sortTotal)setTimeout(()=>showClear(sortScore,sortTotal),800);
+      if(sortDone>=sortTotal)setTimeout(()=>{if(inMode('sort'))showClear(sortScore,sortTotal);},800);
     } else {
       sndNg();
       el.style.animation='none';el.offsetWidth;
@@ -1522,7 +1792,7 @@ function makeSortDraggable(el){
 // ═══════════════════════════════════════════════════════════
 //  MODE 7 – SIZE ORDER
 // ═══════════════════════════════════════════════════════════
-let szTotal=0,szRound=0,szOk=0,szExpected=0,szCount=0;
+let szTotal=0,szRound=0,szOk=0,szExpected=0,szCount=0,szBusy=false;
 
 function initSize(){
   szTotal=diff===1?3:diff===2?5:7;
@@ -1533,8 +1803,10 @@ function initSize(){
   nextSize();
 }
 function nextSize(){
+  if(!inMode('size'))return;
   if(szRound>=szTotal){showClear(szOk,szTotal);return;}
   document.getElementById('msg').classList.remove('show');
+  szBusy=false;
   const nCards=diff===1?3:diff===2?4:5;
   const animal=ANIMALS[~~(Math.random()*ANIMALS.length)];
   const SIZES=['2rem','3rem','4rem','5rem','6rem'];
@@ -1549,11 +1821,14 @@ function nextSize(){
     el.style.fontSize=SIZES[sIdx];
     el.dataset.order=sIdx;
     el.addEventListener('click',()=>{
+      if(szBusy)return;
+      if(el.classList.contains('sz-ok'))return;   // すでに当てたカードの連打は無視
       if(+el.dataset.order===szExpected){
         el.classList.add('sz-ok');
         sndTap();burst(midPt(el).x,midPt(el).y,10);
         szExpected++;
         if(szExpected>=szCount){
+          szBusy=true;
           sndOk();szOk++;
           document.getElementById('sz-score').textContent=szOk;
           showMsg('せいかい！','⭐');burst(innerWidth/2,innerHeight/2,30);
@@ -1587,6 +1862,7 @@ function initDiff(){
   nextDiff();
 }
 function nextDiff(){
+  if(!inMode('diff'))return;
   if(dfRound>=dfTotal){showClear(dfOk,dfTotal);return;}
   document.getElementById('msg').classList.remove('show');
   dfBusy=false;
@@ -1648,6 +1924,7 @@ function initMaze(){
   newMaze();
 }
 function newMaze(){
+  if(!inMode('maze'))return;
   mazeDone=false;mazeDragging=false;
   const size=diff===1?5:diff===2?7:9;
   mazeRows=size;mazeCols=size;
@@ -1714,7 +1991,7 @@ function mazeMove(x,y){
     document.getElementById('mz-clears').textContent=mazeClears;
     sndOk();burst(midPt(cv).x,midPt(cv).y,40);
     showMsg('ゴール！','🌟');
-    if(mazeClears>=mazeNeeded)setTimeout(()=>showClear(mazeNeeded,mazeNeeded),1000);
+    if(mazeClears>=mazeNeeded)setTimeout(()=>{if(inMode('maze'))showClear(mazeNeeded,mazeNeeded);},1000);
     else setTimeout(newMaze,1500);
   }
 }
@@ -1757,6 +2034,7 @@ function initRhythm(){
   setTimeout(startRhythmRound,600);
 }
 function startRhythmRound(){
+  if(!inMode('rhythm'))return;
   ryWaiting=false;ryUserSeq=[];
   const seqLen=diff===1?2:diff===2?3:ryRound+2;
   if(diff===3&&rySeq.length<seqLen) rySeq.push(~~(Math.random()*ryAnims.length));
@@ -1765,6 +2043,7 @@ function startRhythmRound(){
   document.getElementById('ry-seq').textContent='';
   let i=0;
   function flash(){
+    if(!inMode('rhythm'))return;
     if(i>=rySeq.length){
       setTimeout(()=>{document.getElementById('ry-label').textContent='タップして！';ryWaiting=true;},400);
       return;
@@ -1797,7 +2076,7 @@ function onRhythmTap(idx,btn){
     ryRound++;
     document.getElementById('ry-prog').style.width=(ryRound/ryTotal*100)+'%';
     ryWaiting=false;
-    if(ryRound>=ryTotal)setTimeout(()=>showClear(ryOk,ryTotal),1000);
+    if(ryRound>=ryTotal)setTimeout(()=>{if(inMode('rhythm'))showClear(ryOk,ryTotal);},1000);
     else setTimeout(startRhythmRound,1200);
   }
 }
@@ -1875,6 +2154,7 @@ function initClock(){
 }
 
 function nextClock(){
+  if(!inMode('clock'))return;
   if(ckRound>=ckTotal){showClear(ckOk,ckTotal);return;}
   document.getElementById('msg').classList.remove('show');
   ckBusy=false;
@@ -1928,6 +2208,540 @@ function nextClock(){
     container.appendChild(btn);
   });
 }
+
+// ═══════════════════════════════════════════════════════════
+//  MODE 12 – DOT-TO-DOT
+// ═══════════════════════════════════════════════════════════
+let dotTotal=0,dotRound=0,dotOk=0;
+let dotPattern=null,dotNextIdx=0,dotLines=[];
+let dotTapHandler=null;
+const DOT_HIT_R=38;
+
+function initDot(){
+  dotTotal=diff===1?3:diff===2?5:7;
+  dotRound=0;dotOk=0;
+  document.getElementById('dt-score').textContent='0';
+  document.getElementById('dt-prog').style.width='0%';
+  showScr('dot');
+  nextDot();
+}
+
+function nextDot(){
+  if(!inMode('dot'))return;
+  if(dotRound>=dotTotal){showClear(dotOk,dotTotal);return;}
+  document.getElementById('msg').classList.remove('show');
+  dotNextIdx=1;dotLines=[];
+
+  const easy=DOT_PATTERNS.slice(0,2);
+  const med=DOT_PATTERNS.slice(0,4);
+  const pool=diff===1?easy:diff===2?med:DOT_PATTERNS;
+  dotPattern=pool[~~(Math.random()*pool.length)];
+
+  drawDotCanvas();
+  setupDotEvents();
+}
+
+function dotCanvSz(){
+  return Math.min(innerWidth-48,innerHeight-240,280);
+}
+
+function dotScaled(d,sz){
+  return{x:d.x/260*sz,y:d.y/260*sz};
+}
+
+function drawDotCanvas(){
+  const cv=document.getElementById('dot-cv');
+  const sz=dotCanvSz();
+  cv.width=sz;cv.height=sz;
+  const ctx=cv.getContext('2d');
+  ctx.fillStyle='#FAFAFF';ctx.fillRect(0,0,sz,sz);
+
+  const dots=dotPattern.dots;
+
+  // 繋いだ線（dotLines.length個タップ済み → dots[0]〜dots[dotLines.length-1]を繋ぐ）
+  if(dotLines.length>1){
+    ctx.strokeStyle='#C397F5';ctx.lineWidth=4;ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.beginPath();
+    const p0=dotScaled(dots[0],sz);ctx.moveTo(p0.x,p0.y);
+    for(let i=1;i<dotLines.length&&i<dots.length;i++){
+      const p=dotScaled(dots[i],sz);ctx.lineTo(p.x,p.y);
+    }
+    ctx.stroke();
+    // 全部繋いで close なら始点に戻す
+    if(dotLines.length===dots.length&&dotPattern.close){
+      ctx.beginPath();
+      const last=dotScaled(dots[dots.length-1],sz);
+      const first=dotScaled(dots[0],sz);
+      ctx.moveTo(last.x,last.y);ctx.lineTo(first.x,first.y);
+      ctx.stroke();
+    }
+  }
+
+  // 点と番号 — 逆順描画（高インデックスが下、低インデックスが上に重なる）
+  // これにより番号1が常に最前面に表示される
+  for(let i=dots.length-1;i>=0;i--){
+    const {x,y}=dotScaled(dots[i],sz);
+    const connected=i<dotNextIdx-1;
+    const isNext=i===dotNextIdx-1;
+    ctx.beginPath();ctx.arc(x,y,connected?11:isNext?15:12,0,Math.PI*2);
+    ctx.fillStyle=connected?'#95E77E':isNext?'#FFE66D':'#fff';
+    ctx.fill();
+    ctx.strokeStyle=connected?'#4CAF50':isNext?'#FFA24B':'#C397F5';
+    ctx.lineWidth=3;ctx.stroke();
+    ctx.fillStyle=connected?'#1A6000':isNext?'#7A5000':'#9B7FD4';
+    ctx.font=`bold ${Math.round(sz*0.062)}px sans-serif`;
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(i+1,x,y);
+  }
+}
+
+function setupDotEvents(){
+  const cv=document.getElementById('dot-cv');
+  if(dotTapHandler){
+    cv.removeEventListener('click',dotTapHandler);
+    cv.removeEventListener('touchstart',dotTapHandler);
+  }
+  dotTapHandler=function(e){
+    e.preventDefault();
+    if(dotNextIdx>dotPattern.dots.length)return;
+    const rect=cv.getBoundingClientRect();
+    const cx=e.touches?e.touches[0].clientX:e.clientX;
+    const cy=e.touches?e.touches[0].clientY:e.clientY;
+    const ax=cx-rect.left,ay=cy-rect.top;
+    const sz=cv.width;
+    const tgt=dotScaled(dotPattern.dots[dotNextIdx-1],sz);
+    const dist=Math.hypot(ax-tgt.x,ay-tgt.y);
+    if(dist<=DOT_HIT_R){
+      sndTap();
+      dotLines.push(dotNextIdx-1);
+      dotNextIdx++;
+      drawDotCanvas();
+      if(dotNextIdx>dotPattern.dots.length){
+        // 完成
+        setTimeout(()=>{
+          sndOk();dotOk++;
+          document.getElementById('dt-score').textContent=dotOk;
+          burst(rect.left+sz/2,rect.top+sz/2,30);
+          showMsg('できた！',dotPattern.emoji);
+          dotRound++;
+          document.getElementById('dt-prog').style.width=(dotRound/dotTotal*100)+'%';
+          setTimeout(nextDot,600);
+        },150);
+      }
+    }
+  };
+  cv.addEventListener('click',dotTapHandler);
+  cv.addEventListener('touchstart',dotTapHandler,{passive:false});
+}
+
+// ═══════════════════════════════════════════════════════════
+//  MODE 13 – FLASH MEMORY
+// ═══════════════════════════════════════════════════════════
+let flashTotal=0,flashRound=0,flashOk=0;
+let flashItems=[],flashHits=0,flashNeeded=0,flashBusy=false;
+let flashAreaTapHandler=null;
+const FLASH_HIT_R=55;   // タップの当たり判定半径(px)
+
+function initFlash(){
+  flashTotal=diff===1?5:diff===2?7:10;
+  flashRound=0;flashOk=0;flashBusy=false;
+  document.getElementById('fl-score').textContent='0';
+  document.getElementById('fl-prog').style.width='0%';
+  showScr('flash');
+  nextFlash();
+}
+
+function flashShowHintBtns(area,showMs){
+  const hintBtns=document.getElementById('fl-hint-btns');
+  hintBtns.style.display='flex';
+
+  // もう一度みる: 同じ位置で再表示→短時間後に隠す
+  document.getElementById('fl-retry-btn').onclick=()=>{
+    hintBtns.style.display='none';
+    flashItems.forEach(fi=>{ fi.el.style.opacity='1'; });
+    setTimeout(()=>{
+      flashItems.forEach(fi=>{ fi.el.style.opacity='0'; });
+      flashShowHintBtns(area,showMs);
+    },Math.round(showMs*0.7));
+  };
+
+  // わからない: 正解位置を一瞬表示してスキップ
+  document.getElementById('fl-skip-btn').onclick=()=>{
+    flashBusy=true;
+    hintBtns.style.display='none';
+    if(flashAreaTapHandler){
+      area.removeEventListener('click',flashAreaTapHandler);
+      area.removeEventListener('touchstart',flashAreaTapHandler);
+      flashAreaTapHandler=null;
+    }
+    flashItems.forEach(fi=>{
+      fi.el.style.opacity='0.8';
+      const mk=document.createElement('div');
+      mk.className='flash-hit';
+      mk.textContent='💡';
+      mk.style.left=fi.x+'px';
+      mk.style.top=fi.y+'px';
+      area.appendChild(mk);
+    });
+    sndNg();
+    document.getElementById('fl-label').textContent='ここに いたよ！';
+    flashRound++;
+    document.getElementById('fl-prog').style.width=(flashRound/flashTotal*100)+'%';
+    setTimeout(nextFlash,1800);
+  };
+}
+
+function nextFlash(){
+  if(!inMode('flash'))return;
+  if(flashRound>=flashTotal){showClear(flashOk,flashTotal);return;}
+  document.getElementById('msg').classList.remove('show');
+  document.getElementById('fl-hint-btns').style.display='none';
+  flashBusy=false;flashHits=0;
+
+  const n=diff===1?1:diff===2?3:5;
+  const showMs=diff===1?2000:diff===2?1500:1000;
+  flashNeeded=n;
+
+  const area=document.getElementById('fl-area');
+  if(flashAreaTapHandler){
+    area.removeEventListener('click',flashAreaTapHandler);
+    area.removeEventListener('touchstart',flashAreaTapHandler);
+    flashAreaTapHandler=null;
+  }
+  area.innerHTML='';
+  area.style.pointerEvents='none';
+
+  const aW=area.offsetWidth||260;
+  const aH=area.offsetHeight||260;
+  const eSz=50;
+  const MIN_DIST=FLASH_HIT_R*2;  // 理想の間隔（判定円どうしが重ならない）
+  const MIN_DIST_FLOOR=eSz+10;   // ここまでは詰めてよい（絵文字は重ならない）
+
+  const emojis=shuffle([...FLASH_POOL]).slice(0,n);
+  flashItems=[];
+
+  emojis.forEach(e=>{
+    let x,y,ok=false;
+    // 理想の間隔から始めて、置けなければ少しずつ詰めて再試行
+    for(let minD=MIN_DIST;minD>=MIN_DIST_FLOOR&&!ok;minD-=10){
+      for(let tries=0;tries<120&&!ok;tries++){
+        x=eSz/2+Math.random()*(aW-eSz);
+        y=eSz/2+Math.random()*(aH-eSz);
+        ok=flashItems.every(fi=>Math.hypot(x-fi.x,y-fi.y)>=minD);
+      }
+    }
+    const el=document.createElement('div');
+    el.className='flash-emoji';
+    el.textContent=e;
+    el.style.left=(x-eSz/2)+'px';
+    el.style.top=(y-eSz/2)+'px';
+    area.appendChild(el);
+    flashItems.push({x,y,el,hit:false});
+  });
+
+  document.getElementById('fl-label').textContent='よく みてて！';
+
+  setTimeout(()=>{
+    if(!inMode('flash'))return;
+    flashItems.forEach(fi=>fi.el.style.opacity='0');
+    document.getElementById('fl-label').textContent='どこに いたかな？';
+    area.style.pointerEvents='all';
+    flashShowHintBtns(area,showMs);
+
+    flashAreaTapHandler=function(e){
+      // touchstart の直後に合成clickが飛び、同じタップが2回判定されるのを防ぐ
+      if(e.type==='touchstart')e.preventDefault();
+      if(flashBusy)return;
+      const rect=area.getBoundingClientRect();
+      const cx=e.touches?e.touches[0].clientX:e.clientX;
+      const cy=e.touches?e.touches[0].clientY:e.clientY;
+      const ax=cx-rect.left,ay=cy-rect.top;
+
+      // 1タップで複数まとめて当たらないよう、範囲内でいちばん近い1つだけ
+      let fi=null,best=FLASH_HIT_R;
+      flashItems.forEach(it=>{
+        if(it.hit)return;
+        const d=Math.hypot(ax-it.x,ay-it.y);
+        if(d<=best){best=d;fi=it;}
+      });
+
+      if(fi){
+        fi.hit=true;
+        sndTap();
+        fi.el.style.opacity='0.6';
+        const mk=document.createElement('div');
+        mk.className='flash-hit';
+        mk.textContent='✅';
+        mk.style.left=fi.x+'px';
+        mk.style.top=fi.y+'px';
+        area.appendChild(mk);
+        flashHits++;
+        if(flashHits>=flashNeeded){
+          flashBusy=true;
+          document.getElementById('fl-hint-btns').style.display='none';
+          area.removeEventListener('click',flashAreaTapHandler);
+          area.removeEventListener('touchstart',flashAreaTapHandler);
+          flashAreaTapHandler=null;
+          flashOk++;
+          document.getElementById('fl-score').textContent=flashOk;
+          sndOk();
+          const aRect=area.getBoundingClientRect();
+          burst(aRect.left+aW/2,aRect.top+aH/2,28);
+          showMsg('みつけた！','👀');
+          flashRound++;
+          document.getElementById('fl-prog').style.width=(flashRound/flashTotal*100)+'%';
+          // showMsgが消えてから(1400ms)次の問題へ
+          setTimeout(nextFlash,1600);
+        }
+      } else {
+        const mk=document.createElement('div');
+        mk.style.cssText=`position:absolute;left:${ax-14}px;top:${ay-14}px;font-size:1.4rem;pointer-events:none;opacity:1;transition:opacity .5s;`;
+        mk.textContent='💨';
+        area.appendChild(mk);
+        setTimeout(()=>mk.style.opacity='0',50);
+        setTimeout(()=>mk.remove(),600);
+      }
+    };
+
+    area.addEventListener('click',flashAreaTapHandler);
+    area.addEventListener('touchstart',flashAreaTapHandler,{passive:false});
+  },showMs);
+}
+
+// ═══════════════════════════════════════════════════════════
+//  MODE 14 – PATTERN (つづきは なに？)
+// ═══════════════════════════════════════════════════════════
+let ptTotal=0,ptRound=0,ptOk=0,ptBusy=false;
+
+function initPattern(){
+  ptTotal=diff===1?5:diff===2?7:10;
+  ptRound=0;ptOk=0;
+  document.getElementById('pt-score').textContent='0';
+  document.getElementById('pt-prog').style.width='0%';
+  showScr('pattern');
+  nextPattern();
+}
+
+function nextPattern(){
+  if(!inMode('pattern'))return;
+  if(ptRound>=ptTotal){showClear(ptOk,ptTotal);return;}
+  document.getElementById('msg').classList.remove('show');
+  ptBusy=false;
+
+  // くりかえしの単位：やさしい AB / ふつう AAB・ABB / むずかしい ABC
+  const pool=shuffle([...PATTERN_POOL]);
+  const [a,b,c]=pool;
+  const unit=diff===1?[a,b]
+            :diff===2?(Math.random()<.5?[a,a,b]:[a,b,b])
+            :[a,b,c];
+
+  // 2周ぶん＋3周目の途中まで見せて、その次を答えてもらう
+  const missIdx=~~(Math.random()*unit.length);
+  const shown=[...unit,...unit,...unit.slice(0,missIdx)];
+  const answer=unit[missIdx];
+
+  const row=document.getElementById('pt-row');
+  row.innerHTML='';
+  shown.forEach((e,i)=>{
+    const cell=document.createElement('div');
+    cell.className='pattern-cell';
+    cell.textContent=e;
+    cell.style.animationDelay=(i*.05)+'s';
+    row.appendChild(cell);
+  });
+  const qCell=document.createElement('div');
+  qCell.className='pattern-cell q';
+  qCell.textContent='？';
+  row.appendChild(qCell);
+
+  // 選択肢：まずパターンに出てくる絵、足りなければ使っていない絵で埋める
+  const nOpts=diff===1?3:4;
+  const inPat=shuffle([...new Set(unit)].filter(e=>e!==answer));
+  const extras=shuffle(pool.filter(e=>!unit.includes(e)));
+  const opts=shuffle([answer,...[...inPat,...extras].slice(0,nOpts-1)]);
+
+  const container=document.getElementById('pt-opts');
+  container.innerHTML='';
+  opts.forEach(e=>{
+    const el=document.createElement('div');
+    el.className='shape-opt';
+    el.textContent=e;
+    el.addEventListener('click',()=>{
+      if(ptBusy)return;
+      ptBusy=true;sndTap();
+      qCell.classList.remove('q');
+      qCell.textContent=answer;       // ？ に答えをはめて完成形を見せる
+      if(e===answer){
+        el.classList.add('ok');
+        ptOk++;document.getElementById('pt-score').textContent=ptOk;
+        sndOk();
+        const m=midPt(el);burst(m.x,m.y,22);
+        showMsg('せいかい！','✨');
+      } else {
+        el.classList.add('ng');sndNg();
+        showMsg('ちがうよ！','💪');
+        [...container.children].forEach(o=>{
+          if(o.textContent===answer)o.classList.add('ok');
+        });
+      }
+      ptRound++;
+      document.getElementById('pt-prog').style.width=(ptRound/ptTotal*100)+'%';
+      setTimeout(nextPattern,1200);
+    });
+    container.appendChild(el);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  MODE 15 – COMPARE (どっちが おおい？)
+// ═══════════════════════════════════════════════════════════
+let cpTotal=0,cpRound=0,cpOk=0,cpBusy=false;
+
+function initComp(){
+  cpTotal=diff===1?5:diff===2?7:10;
+  cpRound=0;cpOk=0;
+  document.getElementById('cp-score').textContent='0';
+  document.getElementById('cp-prog').style.width='0%';
+  showScr('comp');
+  nextComp();
+}
+
+function nextComp(){
+  if(!inMode('comp'))return;
+  if(cpRound>=cpTotal){showClear(cpOk,cpTotal);return;}
+  document.getElementById('msg').classList.remove('show');
+  cpBusy=false;
+
+  const max=diff===1?5:diff===2?8:10;
+  const minGap=diff===1?3:diff===2?2:1;
+
+  let n1=1,n2=1,tries=0;
+  do{
+    n1=1+~~(Math.random()*max);
+    n2=1+~~(Math.random()*max);
+    tries++;
+  }while(Math.abs(n1-n2)<minGap&&tries<200);
+  if(n1===n2)n2=n1<max?n1+1:n1-1;   // 念のため同数は避ける
+
+  // むずかしいだけ「すくないほう」も出題
+  const askMore=diff===3?Math.random()<.5:true;
+  document.getElementById('cp-label').textContent=askMore?'どっちが おおい？':'どっちが すくない？';
+  const correct=askMore?(n1>n2?0:1):(n1<n2?0:1);
+
+  // むずかしいは左右で絵文字を変えて、見た目ではなく数で比べさせる
+  const a1=ANIMALS[~~(Math.random()*ANIMALS.length)];
+  const a2=diff===3?ANIMALS[~~(Math.random()*ANIMALS.length)]:a1;
+
+  const panels=[document.getElementById('cp-left'),document.getElementById('cp-right')];
+  [[n1,a1],[n2,a2]].forEach(([n,a],pi)=>{
+    const p=panels[pi];
+    p.className='comp-panel';
+    p.innerHTML='';
+    for(let i=0;i<n;i++){
+      const sp=document.createElement('span');
+      sp.className='comp-item';
+      sp.textContent=a.e;
+      sp.style.animationDelay=(i*.05)+'s';
+      p.appendChild(sp);
+    }
+    p.onclick=()=>{
+      if(cpBusy)return;
+      cpBusy=true;sndTap();
+      if(pi===correct){
+        p.classList.add('ok');
+        cpOk++;document.getElementById('cp-score').textContent=cpOk;
+        sndOk();
+        const m=midPt(p);burst(m.x,m.y,26);
+        showMsg('せいかい！','⭐');
+      } else {
+        p.classList.add('ng');sndNg();
+        showMsg('ちがうよ！','💪');
+        panels[correct].classList.add('ok');
+      }
+      cpRound++;
+      document.getElementById('cp-prog').style.width=(cpRound/cpTotal*100)+'%';
+      setTimeout(nextComp,1200);
+    };
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  MODE 16 – SHADOW MATCH (かげあわせ)
+// ═══════════════════════════════════════════════════════════
+let sdTotal=0,sdRound=0,sdOk=0,sdBusy=false;
+
+function initShadow(){
+  sdTotal=diff===1?5:diff===2?8:10;
+  sdRound=0;sdOk=0;
+  document.getElementById('sd-score').textContent='0';
+  document.getElementById('sd-prog').style.width='0%';
+  showScr('shadow');
+  nextShadow();
+}
+
+function nextShadow(){
+  if(!inMode('shadow'))return;
+  if(sdRound>=sdTotal){showClear(sdOk,sdTotal);return;}
+  document.getElementById('msg').classList.remove('show');
+  sdBusy=false;
+
+  const nOpts=diff===1?3:diff===2?4:5;
+  const group=SHADOW_GROUPS[~~(Math.random()*SHADOW_GROUPS.length)];
+  const target=group[~~(Math.random()*group.length)];
+
+  // むずかしいは似たかたちの仲間から、やさしい・ふつうは全体から選ぶ
+  const src=diff===3?group:SHADOW_ALL;
+  const others=shuffle(src.filter(e=>e!==target)).slice(0,nOpts-1);
+  while(others.length<nOpts-1){                     // 仲間が少ないときは全体から補う
+    const e=SHADOW_ALL[~~(Math.random()*SHADOW_ALL.length)];
+    if(e!==target&&!others.includes(e))others.push(e);
+  }
+  const opts=shuffle([target,...others]);
+
+  document.getElementById('sd-target').textContent=target;
+
+  const container=document.getElementById('sd-opts');
+  container.innerHTML='';
+  opts.forEach(e=>{
+    const el=document.createElement('div');
+    el.className='shape-opt';
+    el.textContent=e;
+    el.addEventListener('click',()=>{
+      if(sdBusy)return;
+      sdBusy=true;sndTap();
+      if(e===target){
+        el.classList.add('ok');
+        sdOk++;document.getElementById('sd-score').textContent=sdOk;
+        sndOk();
+        const m=midPt(el);burst(m.x,m.y,22);
+        showMsg('せいかい！','🌟');
+      } else {
+        el.classList.add('ng');sndNg();
+        showMsg('ちがうよ！','💪');
+        [...container.children].forEach(o=>{
+          if(o.textContent===target)o.classList.add('ok');
+        });
+      }
+      sdRound++;
+      document.getElementById('sd-prog').style.width=(sdRound/sdTotal*100)+'%';
+      setTimeout(nextShadow,1100);
+    });
+    container.appendChild(el);
+  });
+}
+
+// ─────────────────────────────────────────────
+//  CANVAS REDRAW ON RESIZE / ROTATE
+//  （めいろ・てんつなぎはサイズを画面から計算しているため再描画が必要）
+// ─────────────────────────────────────────────
+let redrawT=null;
+addEventListener('resize',()=>{
+  clearTimeout(redrawT);
+  redrawT=setTimeout(()=>{
+    if(curMode==='maze'&&mazeGrid.length)drawMaze();
+    else if(curMode==='dot'&&dotPattern)drawDotCanvas();
+  },120);
+});
 
 // ─────────────────────────────────────────────
 //  INIT AUDIO ON FIRST TOUCH/CLICK
